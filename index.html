@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/2b63c3a274.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./src/main.js"></script>
+    <script src="./src/background.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-search">search</div>
+      <div class="header-weather">weather</div>
+    </header>
+
+    <section class="container-top">
+      <h1 class="container-top--clock">00:00</h1>
+
+      <form action="get" class="container-top__greeting">
+        <h2 class="container-top__greeting--text">
+          Thank you visiting our website!
+        </h2>
+
+        <input
+          type="text"
+          class="container-top__greeting--input"
+          placeholder="이름을 적으세요"
+          name="name"
+          autocomplete="off"
+        />
+      </form>
+
+      <button
+        class="container-top__greeting--edit"
+        type="button"
+        data-type="edit"
+      ></button>
+    </section>
+
+    <section class="container-bottom">
+      <h1 class="sr-only">배경이미지와 명언과 할일목록</h1>
+      <div class="container-bottom--description">
+        <a href="" class="container-bottom--location">
+          <span class="bg-location">korea, gunpobackground</span>
+          <span class="bg-photographer">mr.kim</span>
+        </a>
+
+        <blockquote class="container-bottom--blockquote" cite="가나다라">
+          <p class="container-bottom--quote">명언 나오는 곳</p>
+          <!-- <cite class="container-bottom-cite">작가 나오는 곳</cite> -->
+        </blockquote>
+
+        <div class="container-bottom--todo">
+          <div class="todo-container active">
+            <!-- <div class="todo-container">
+              <header class="todo-container--header">ToDoList</header>
+
+              <form action="get" class="todo-form">
+                <ul class="todo-container--list">
+                  <p class="no-list">make your List👇</p>
+                </ul>
+
+                <input
+                  type="text"
+                  class="todo-input"
+                  placeholder="Write Your List"
+                />
+              </form>
+            </div> -->
+
+            <button class="todo-button">Todo</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

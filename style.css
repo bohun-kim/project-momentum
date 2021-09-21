@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+span {
+  display: block;
+}
+
+.header {
+  border: 1px solid red;
+  width: 100%;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-top {
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px 50px;
+}
+
+.container-top .container-top--clock {
+  margin-bottom: 40px;
+  font-size: 4rem;
+  font-weight: 300;
+}
+
+.container-top .container-top__greeting--text {
+  margin-bottom: 70px;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.container-top .container-top__greeting--input {
+  width: 90%;
+  text-align: center;
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.6);
+  font-size: 2rem;
+}
+
+.container-top .container-top__greeting--input:focus {
+  outline: none;
+}
+
+.container-bottom {
+  border: 1px solid black;
+}
+
+.container-bottom--description {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  padding: 20px 50px;
+}

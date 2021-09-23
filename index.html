@@ -9,13 +9,33 @@
       src="https://kit.fontawesome.com/2b63c3a274.js"
       crossorigin="anonymous"
     ></script>
-    <script src="./src/main.js"></script>
-    <script src="./src/background.js"></script>
+    <script src="./src/main.js" defer></script>
+    <script src="./src/background.js" defer></script>
+    <script src="./src/search.js" defer></script>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="reset.css" />
   </head>
   <body>
     <header class="header">
-      <div class="header-search">search</div>
+      <div class="header-search">
+        <button class="search-button">Search</button>
+
+        <div class="header__form-container">
+          <form
+            action="https://www.google.com/searchs"
+            method="GET"
+            class="search-form"
+          >
+            <input
+              type="search"
+              name="google-search"
+              class="search-input"
+              autocomplete="off"
+            />
+            <button type="submit" class="form-button"></button>
+          </form>
+        </div>
+      </div>
       <div class="header-weather">weather</div>
     </header>
 
@@ -47,18 +67,19 @@
       <h1 class="sr-only">배경이미지와 명언과 할일목록</h1>
       <div class="container-bottom--description">
         <a href="" class="container-bottom--location">
-          <span class="bg-location">korea, gunpobackground</span>
-          <span class="bg-photographer">mr.kim</span>
+          <span class="bg-location"></span>
+          <span class="bg-photographer"></span>
         </a>
+      </div>
 
-        <blockquote class="container-bottom--blockquote" cite="가나다라">
-          <p class="container-bottom--quote">명언 나오는 곳</p>
-          <!-- <cite class="container-bottom-cite">작가 나오는 곳</cite> -->
-        </blockquote>
+      <blockquote class="container-bottom--blockquote" cite="가나다라">
+        <p class="container-bottom--quote">명언 나오는 곳</p>
+        <!-- <cite class="container-bottom-cite">작가 나오는 곳</cite> -->
+      </blockquote>
 
-        <div class="container-bottom--todo">
-          <div class="todo-container active">
-            <!-- <div class="todo-container">
+      <div class="container-bottom--todo">
+        <div class="todo-container active">
+          <!-- <div class="todo-container">
               <header class="todo-container--header">ToDoList</header>
 
               <form action="get" class="todo-form">
@@ -74,8 +95,7 @@
               </form>
             </div> -->
 
-            <button class="todo-button">Todo</button>
-          </div>
+          <button class="todo-button">Todo</button>
         </div>
       </div>
     </section>

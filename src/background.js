@@ -1,3 +1,7 @@
+const bottomAuthor = document.querySelector('.container-bottom--location');
+const photographer = document.querySelector('.bg-photographer');
+const containerBottom = document.querySelector('.container-bottom');
+
 function showBackground(img) {
   const backBody = document.querySelector('body');
   const url = img.urls.regular;
@@ -20,6 +24,10 @@ function showSource(img) {
   bottomLocation.setAttribute('href', `${descLink}`);
   sourceAuthor.textContent = userName;
   sourceLocation.textContent = userLocation;
+
+  if (userLocation === null) {
+    sourceLocation.textContent = 'No local information';
+  }
 }
 
 function loadImages() {

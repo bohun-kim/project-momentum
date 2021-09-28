@@ -12,7 +12,6 @@ function showBackground(img) {
 }
 
 function showSource(img) {
-  console.log(img);
   const sourceLocation = document.querySelector('.bg-location');
   const sourceAuthor = document.querySelector('.bg-photographer');
   const bottomLocation = document.querySelector('.container-bottom--location');

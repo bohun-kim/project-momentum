@@ -12,6 +12,12 @@
     <script src="./src/main.js" defer></script>
     <script src="./src/background.js" defer></script>
     <script src="./src/search.js" defer></script>
+    <script src="./src/weather.js" defer></script>
+    <script src="./src/time.js" defer></script>
+    <script src="./src/name.js" defer></script>
+    <script src="./src/quote.js" defer></script>
+    <script src="./src/todo.js" defer></script>
+
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="reset.css" />
   </head>
@@ -36,13 +42,18 @@
           </form>
         </div>
       </div>
-      <div class="header-weather">weather</div>
+
+      <div class="header-weather">
+        <img src="" alt="weather-icon" class="weather-icon" />
+        <span class="weather-degree"></span>
+        <span class="weather-position"></span>
+      </div>
     </header>
 
     <section class="container-top">
-      <h1 class="container-top--clock">00:00</h1>
+      <h1 class="container-top--clock"></h1>
 
-      <form action="get" class="container-top__greeting">
+      <form action="get" class="container-top__greeting" name="greeting">
         <h2 class="container-top__greeting--text">
           Thank you visiting our website!
         </h2>
@@ -54,13 +65,12 @@
           name="name"
           autocomplete="off"
         />
+        <button
+          class="container-top__greeting--edit"
+          type="button"
+          data-type="edit"
+        ></button>
       </form>
-
-      <button
-        class="container-top__greeting--edit"
-        type="button"
-        data-type="edit"
-      ></button>
     </section>
 
     <section class="container-bottom">
@@ -72,30 +82,32 @@
         </a>
       </div>
 
-      <blockquote class="container-bottom--blockquote" cite="가나다라">
-        <p class="container-bottom--quote">명언 나오는 곳</p>
-        <!-- <cite class="container-bottom-cite">작가 나오는 곳</cite> -->
+      <blockquote class="container-bottom--blockquote" cite="random">
+        <p class="container-bottom--quote"></p>
+        <cite class="container-bottom--author"></cite>
       </blockquote>
 
-      <div class="container-bottom--todo">
-        <div class="todo-container active">
-          <!-- <div class="todo-container">
-              <header class="todo-container--header">ToDoList</header>
+      <div class="container-bottom__todo">
+        <button class="container-bottom__todo-button">Todo</button>
 
-              <form action="get" class="todo-form">
-                <ul class="todo-container--list">
-                  <p class="no-list">make your List👇</p>
-                </ul>
+        <div class="container-bottom__todo-position">
+          <div class="container-bottom__todo-container">
+            <header class="container-bottom__todo-container--header">
+              ToDoList
+            </header>
 
-                <input
-                  type="text"
-                  class="todo-input"
-                  placeholder="Write Your List"
-                />
-              </form>
-            </div> -->
+            <form action="get" class="container-bottom__todo-container--form">
+              <ul class="container-bottom__todo-container--ul">
+                <p class="no-list hide">Make Your List 👇</p>
+              </ul>
 
-          <button class="todo-button">Todo</button>
+              <input
+                type="text"
+                class="container-bottom__todo-container--input"
+                placeholder="Write Your List"
+              />
+            </form>
+          </div>
         </div>
       </div>
     </section>

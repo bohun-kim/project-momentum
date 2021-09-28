@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500;700&display=swap');
 
 :root {
-  --white-color: white;
-  --transition-time: 0.5s;
+  --white-color: #fff;
+  --black-color: rgba(0, 0, 0, 0.7);
+  --transition-time: 0.3s;
   --transition-color: #0fbcf9;
+  --size-todo: 1em;
 }
 
 * {
@@ -44,7 +46,6 @@ input {
 
 /* header */
 .header {
-  border: 1px solid red;
   width: 100%;
   height: 60px;
   padding: 20px 50px;
@@ -97,6 +98,10 @@ input {
   width: 100%;
 }
 
+.search-input:focus {
+  outline: none;
+}
+
 .form-button {
   width: 15px;
   height: 15px;
@@ -112,9 +117,21 @@ input {
   display: block;
 }
 
+.weather-position {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.weather-icon {
+  width: 25px;
+  height: 25px;
+  background-color: transparent;
+  margin-right: 5px;
+}
+
 /* container top */
 .container-top {
-  border: 1px solid blue;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -127,20 +144,28 @@ input {
 .container-top .container-top--clock {
   margin-bottom: 20px;
   font-size: 7rem;
-  font-weight: 300;
-}
-
-.container-top .container-top__greeting--text {
-  margin-bottom: 70px;
-  font-size: 2rem;
   font-weight: 500;
 }
 
+.container-top__greeting--input.hide {
+  display: none;
+}
+
+.showInput {
+  font-size: 3.5rem;
+}
+
+.container-top .container-top__greeting--text {
+  margin-bottom: 20px;
+  font-size: 4rem;
+  font-weight: 400;
+}
+
 .container-top .container-top__greeting--input {
-  width: 90%;
+  width: 50%;
   text-align: center;
   border: none;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.6);
+  border-bottom: 2px solid var(--white-color);
   font-size: 2rem;
 }
 
@@ -148,14 +173,41 @@ input {
   outline: none;
 }
 
+.container-top__greeting--edit {
+  transform: translate(280px, -100px);
+  width: 14px;
+  height: 14px;
+  background-color: transparent;
+  background: url(./assets/edit.svg) no-repeat center/cover;
+}
+
+.container-top__greeting--edit.hide {
+  display: none;
+}
+
+.showInput {
+  width: 100%;
+  font-size: 3rem;
+  margin-top: 20px;
+  outline: none;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom-color var(--transition-time) ease-in-out;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.showInput[contenteditable='true']:focus {
+  border-bottom-color: var(--white-color);
+}
+
 /* constainer bottom */
 
 .container-bottom {
-  border: 1px solid navajowhite;
   color: var(--white-color);
   display: flex;
   justify-content: space-between;
-  padding: 20px 50px;
+  height: 60px;
+  padding: 20px;
 }
 
 .container-bottom--description {
@@ -163,10 +215,13 @@ input {
   justify-content: space-between;
   text-align: center;
   font-size: 0.9rem;
+  flex: 1;
 }
 
 .container-bottom--location {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .bg-location {
@@ -191,4 +246,166 @@ input {
   transform: translateY(10px);
   opacity: 1;
   color: var(--transition-color);
+}
+
+.container-bottom--blockquote {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  flex: 2;
+}
+
+.container-bottom--blockquote {
+  cursor: default;
+}
+
+.container-bottom--quote {
+  transition: all var(--transition-time) ease-in-out;
+  white-space: nowrap;
+}
+
+.container-bottom--blockquote:hover .container-bottom--quote {
+  transform: translateY(-8px);
+  color: var(--transition-color);
+}
+
+.container-bottom--author {
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  transition: all var(--transition-time) ease-in-out;
+}
+
+.container-bottom--blockquote:hover .container-bottom--author {
+  transform: translateY(12px);
+  opacity: 1;
+  color: var(--transition-color);
+}
+
+/* todo */
+
+.container-bottom__todo-button:hover {
+  transition: color var(--transition-time) ease-in-out;
+  color: var(--transition-color);
+}
+
+.container-bottom__todo-container--check[type='checkbox']:checked ~ span {
+  text-decoration: line-through;
+  color: rgba(0, 0, 0, 0.5);
+  transition: all var(--transition-time) ease-in-out;
+}
+
+.container-bottom__todo {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.container-bottom__todo-position {
+  position: absolute;
+  bottom: 50px;
+  right: 10px;
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(3px);
+  box-shadow: -10 ​4px 16px 0 rgb(31 38 135 / 37%);
+  border-radius: 10px;
+  transition: all var(--transition-time) ease-in-out;
+  opacity: 0;
+}
+
+.container-bottom__todo-position.active {
+  opacity: 1;
+  transform: translateY(-5px);
+}
+
+.container-bottom__todo-container--form {
+  width: 300px;
+  overflow-x: scroll;
+}
+
+.container-bottom__todo-container--header {
+  padding: 15px;
+  font-size: 1.2rem;
+  color: var(--black-color);
+}
+
+.container-bottom__todo-container--ul .no-list {
+  display: block;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 2rem 0;
+  color: var(--black-color);
+  opacity: 1;
+}
+
+.container-bottom__todo-container--ul .no-list.hide {
+  opacity: 0;
+  display: none;
+}
+
+.container-bottom__todo-container--li {
+  display: flex;
+  padding: 0 0 8px 20px;
+}
+
+.container-bottom__todo-container--li label {
+  width: 14px;
+  height: 14px;
+  margin-right: calc(var(--size-todo) / 2);
+  border-radius: 2px;
+  cursor: pointer;
+  background-color: transparent;
+  background: var(--white-color) url(./assets/checkmark.svg) no-repeat
+    center/cover;
+  transition: background-color var(--transition-time) ease-in-out;
+}
+
+.container-bottom__todo-container--li label:hover {
+  background-color: var(--transition-color);
+}
+
+.container-bottom__todo-container--check {
+  margin-right: 10px;
+  display: none;
+}
+
+.container-bottom__todo-container--span {
+  flex: 1;
+}
+
+.container-bottom__todo-container--span[contenteditable='true']:focus {
+  border-bottom: 1px solid var(--white-color);
+  outline: none;
+}
+
+.container-bottom__todo-container--btns {
+  padding-right: 20px;
+}
+
+.container-bottom__todo-container--edit {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+  background: url(./assets/edit.svg) no-repeat center/cover;
+}
+
+.container-bottom__todo-container--delete {
+  width: 15px;
+  height: 15px;
+  background: url(./assets/delete.svg) no-repeat center/cover;
+}
+
+.container-bottom__todo-container--input {
+  width: 100%;
+  padding: 10px;
+}
+
+.container-bottom__todo-container--input:focus {
+  outline: none;
+}
+
+.container-bottom__todo-container--input::placeholder {
+  color: var(--black-color);
 }

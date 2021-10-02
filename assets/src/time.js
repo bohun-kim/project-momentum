@@ -7,12 +7,13 @@ function startTime() {
   let h = today.getHours();
   let m = today.getMinutes();
 
-  // 분과 초가 0보다 작아질 때 앞에 0 붙이기
+  // 시간과 분이 0보다 작아질 때 앞에 0 붙이기
   h = checkTime(h);
   m = checkTime(m);
 
   document.querySelector('.container-top--clock').textContent = `${h}:${m}`;
-  t = setTimeout(function () {
+
+  setTimeout(() => {
     startTime();
   }, 1000);
 }

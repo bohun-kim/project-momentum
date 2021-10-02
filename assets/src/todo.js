@@ -26,7 +26,7 @@ function checkList(target) {
   }
 }
 
-// 편집 기능
+// 수정 기능
 function editList(target) {
   const btnContainer = target.parentNode;
   const listContainer = btnContainer.parentNode;
@@ -175,6 +175,7 @@ function loadToDos() {
     noList.classList.remove('hide');
   } else {
     noList.classList.add('hide');
+
     const parsedTodos = JSON.parse(loadedToDos);
     parsedTodos.forEach((todo) => {
       createItem(todo.inputValue, todo.checked);

@@ -1,3 +1,5 @@
+let COORDS = 'coords';
+
 // 화면에 출력
 function showScreen(data) {
   const weatherDegree = document.querySelector('.weather-degree');
@@ -9,20 +11,20 @@ function showScreen(data) {
   const id = data.weather[0].id;
 
   weatherDegree.innerHTML = `${weatherDeg} &#8451;`;
-  weatherPosition.innerHTML = currPositioin;
+  weatherPosition.textContent = currPositioin;
 
   if (id === 800) {
-    weatherIcon.src = 'assets/clear.svg';
+    weatherIcon.src = 'assets/icons/clear.svg';
   } else if (id >= 200 && id <= 232) {
-    weatherIcon.src = 'assets/storm.svg';
+    weatherIcon.src = 'assets/icons/storm.svg';
   } else if (id >= 600 && id <= 622) {
-    weatherIcon.src = 'assets/snow.svg';
+    weatherIcon.src = 'assets/icons/snow.svg';
   } else if (id >= 701 && id <= 781) {
-    weatherIcon.src = 'assets/haze.svg';
+    weatherIcon.src = 'assets/icons/haze.svg';
   } else if (id >= 801 && id <= 804) {
-    weatherIcon.src = 'assets/cloud.svg';
+    weatherIcon.src = 'assets/icons/cloud.svg';
   } else if ((id >= 300 && id <= 321) || (id >= 500 && id <= 531)) {
-    weatherIcon.src = 'assets/rain.svg';
+    weatherIcon.src = 'assets/icons/rain.svg';
   }
 }
 
@@ -44,17 +46,12 @@ function loadWeather(coords) {
     .catch((error) => console.log('error', error));
 }
 
-// getCurrentPosition 에러
+// 위치 정보 제공 거부
 function error(err) {
-  console.warn('cant access geo location');
+  console.warn(err.message);
 }
 
-// 첫 페이지 로드시 장치의 위치를 알아내기
-function loadCoords() {
-  navigator.geolocation.getCurrentPosition(success, error);
-}
-
-// getCurrentPosition 성공
+// 위치 정보 제공 동의
 function success(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
@@ -66,17 +63,21 @@ function success(position) {
   saveCoords(coords);
 }
 
-let COORDS = 'coords';
-
+// localStorage 저장
 function saveCoords(coords) {
   localStorage.setItem(COORDS, JSON.stringify(coords));
+}
+
+// 첫 페이지 로드시 장치의 위치 확인
+function loadCoords() {
+  navigator.geolocation.getCurrentPosition(success, error);
 }
 
 function init() {
   if (localStorage.getItem('COORDS') === null) {
     loadCoords();
   } else {
-    COORDS = JSON.parse(localStorage.getItem('COORDS'));
+    JSON.parse(localStorage.getItem('COORDS'));
   }
 }
 

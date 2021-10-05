@@ -2,7 +2,7 @@
 
 <img width="1440" alt="스크린샷 2021-09-29 오전 9 26 51" src="https://user-images.githubusercontent.com/75374915/135183301-6a04d658-30b0-4eb8-9086-e1e02365682f.png">
 
-[프로젝트 보러가기](https://bohun-kim.github.io/project-momentum/ 'project-momentum')
+[프로젝트 보러가기](https://bohun-kim.github.io/project-momentum/)
 
 # ⭐️ 목표
 

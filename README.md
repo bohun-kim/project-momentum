@@ -651,7 +651,6 @@ function editList(target) {
 ```js
 // 체크박스 클릭시 기능
 function checkList(target) {
-  console.log(target);
   if (!target.classList.contains('checked')) {
     target.classList.add('checked');
     todos[target.dataset.id - 1].checked = 1;
